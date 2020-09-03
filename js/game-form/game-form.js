@@ -1,25 +1,40 @@
 import { checkIfRadiusValid, isNumber } from '../validation.js';
 
 const gameForm = document.documentElement.querySelector('.game-form');
+const tableWrapper = document.documentElement.querySelector('.results');
 
 const radiusInput = gameForm.querySelector('.game-form__radius');
 const coordsInputs = gameForm.querySelectorAll('.game-form__coord');
 
 
 
-gameForm.addEventListener('submit', (e) => {
+gameForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
   for (let coordInput of coordsInputs) {
     const wrapper = coordInput.closest('.game-form__input-wrapper');
 
     if (!validateCoordinate(wrapper, coordInput.value)) {
-      e.preventDefault();
+      return;
     }
   }
 
   const radiusInputWrapper = radiusInput.closest('.game-form__input-wrapper');
 
   if (!validateRadius(radiusInputWrapper, radiusInput.value)) {
-    e.preventDefault();
+    return;
+  }
+
+  const response = await fetch('./server/hit.php', {
+    method: 'POST',
+    body: new FormData(gameForm),
+  });
+
+  if (response.ok) {
+    const html = await response.text();
+    tableWrapper.innerHTML = html; 
+  } else {
+    const error = await response.text();
+    alert(`Ошибка ${response.status} ${error ? `: ${error}` : ''}`)
   }
 });
 
