@@ -2,6 +2,8 @@
 
 include './render-template.php';
 
+session_start();
+
 function validate_coord($coord, $coord_name) {
   if (!isset($coord)) {
     return "Координата $coord_name не задана";
@@ -54,7 +56,14 @@ if (isset($_POST)) {
       exit($error);
     }
   }
+
   $hit = array($x, $y, $r, is_point_in_area($x, $y, $r));
-  $table = renderTemplate('./templates/table.php', ['rows' => array($hit)]);
+
+  if (!isset($_SESSION['hits'])) {
+    $_SESSION['hits'] = [];
+  }
+  array_push($_SESSION['hits'], $hit);
+
+  $table = renderTemplate('./templates/table.php', ['rows' => $_SESSION['hits']]);
   echo($table);
 }

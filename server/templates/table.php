@@ -10,9 +10,10 @@
         <?php foreach ($hit as $value): ?>
           <td><?php 
               if (is_bool($value)) {
-                exit($value ? 'Попал' : 'Не попал'); 
+                echo $value ? 'Попал' : 'Не попал'; 
+              } else {
+                echo $value;
               }
-              echo $value;
             ?></td>
         <?php endforeach; ?> 
       </tr>   
