@@ -2,6 +2,10 @@
 
 include './render-template.php';
 
+date_default_timezone_set('Europe/Moscow');
+
+$start = microtime(true);
+
 session_start();
 
 function validate_coord($coord, $coord_name) {
@@ -57,11 +61,14 @@ if (isset($_POST)) {
     }
   }
 
-  $hit = array($x, $y, $r, is_point_in_area($x, $y, $r));
-
   if (!isset($_SESSION['hits'])) {
     $_SESSION['hits'] = [];
   }
+
+  $exec_time = microtime(true) - $start;
+  $current_time = date("H:i:s, Часовой пояс: T");
+
+  $hit = array($x, $y, $r, is_point_in_area($x, $y, $r), $exec_time, $current_time);
   array_push($_SESSION['hits'], $hit);
 
   $table = renderTemplate('./templates/table.php', ['rows' => $_SESSION['hits']]);
