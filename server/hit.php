@@ -2,9 +2,12 @@
 
 include './render-template.php';
 
+header('Access-Control-Allow-Origin: *');
+
 date_default_timezone_set('Europe/Moscow');
 
 $start = microtime(true);
+
 
 session_start();
 
@@ -17,6 +20,24 @@ function validate_coord($coord, $coord_name) {
   return "";
 }
 
+function validate_x_coord($coord, $coord_name) {
+  $err = validate_coord($coord, $coord_name);
+  if ($err) return $err;
+  if (!in_array(floatval($coord), [-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2])) {
+    return "Координата $coord_name должна быть одной из чисел: { -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2 }";
+  }
+  return "";
+}
+
+function validate_y_coord($coord, $coord_name) {
+  $err = validate_coord($coord, $coord_name);
+  if ($err) return $err;
+  if ($coord <= -3 || $coord >= 5) {
+    return "Координата $coord_name должна лежать в пределах (-3, 5)";
+  }
+  return "";
+}
+
 function validate_radius($radius) {
   if (!isset($radius)) {
     return "Радиус не задан";
@@ -24,6 +45,8 @@ function validate_radius($radius) {
     return "Радиус должен быть числом";
   } elseif ($radius < 0) {
     return "Радиус не может быть отрицательным";
+  } elseif (!in_array(floatval($radius), [1, 2, 3, 4, 5])) {
+    return "Радиус должен быть одним из чисел: { 1, 2, 3, 4, 5 }";
   }
   return "";
 }
@@ -50,8 +73,8 @@ if (isset($_POST)) {
   $y = $_POST['y-coord'];
   $r = $_POST['r-param'];
   $errors = [
-    validate_coord($x, 'X'),
-    validate_coord($y, 'Y'),
+    validate_x_coord($x, 'X'),
+    validate_y_coord($y, 'Y'),
     validate_radius($r, 'R'),
   ];
   foreach ($errors as $error) {

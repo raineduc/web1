@@ -17,3 +17,5 @@ export const getNumber = (value) => typeof value === 'number' ? value : parseFlo
 export const getNumbers = (values) => values.map(getNumber);
 
 export const checkIfRadiusValid = (radius) => isNumber(radius) && radius >= 0;
+
+export const isYCoordInValidRange = (coord) => coord > -3 && coord < 5;

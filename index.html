@@ -5,26 +5,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Web 1</title>
-  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
-  <header>
+  <header class="header">
     <span class="name">Хузин Рамиль Ришатович</span>
-    <span class="group">P3212</span>
-    <span class="option">2326</span>
+    <span class="group">Группа: P3212</span>
+    <span class="option">Вариант: 2326</span>
   </header>
   <div class="main">
     <form class="game-form">
-      <div class="input-wrapper game-form__input-wrapper"><label for="x-coord">Введите X координату
-          <input type="number" id="x-coord" name="x-coord" class="game-form__coord" step="any">
-        </label></div>
-      <div class="input-wrapper game-form__input-wrapper"><label for="y-coord">Введите Y координату
+      <div class="input-wrapper game-form__input-wrapper">
+        <p>Введите X координату</p>
+        <select id="x-coord" name="x-coord" class="game-form__coord-select">
+          <option value="-2">-2</option>
+          <option value="-1.5">-1,5</option>
+          <option value="-1">-1</option>
+          <option value="-0.5">-0,5</option>
+          <option value="0">0</option>
+          <option value="0.5">0,5</option>
+          <option value="1">1</option>
+          <option value="1.5">1,5</option>
+          <option value="2">2</option>
+        </select>
+      </div>
+      <div class="input-wrapper game-form__input-wrapper"><label for="y-coord">Введите Y координату в пределах (-3, 5)
           <input type="number" id="y-coord" name="y-coord" class="game-form__coord" step="any">
         </label></div>
-      <div class="input-wrapper game-form__input-wrapper"><label for="r-param">Введите параметр R
-          <input type="number" id="x-coord" name="r-param" class="game-form__radius" step="any">
-        </label></div>
+      <div class="input-wrapper game-form__input-wrapper">
+        <p>Введите параметр R</p>
+        <label>1 <input type="radio" name="r-param" value="1" class="game-form__radius"></label>
+        <label>2 <input type="radio" name="r-param" value="2" class="game-form__radius"></label>
+        <label>3 <input type="radio" name="r-param" value="3" class="game-form__radius"></label>
+        <label>4 <input type="radio" name="r-param" value="4" class="game-form__radius"></label>
+        <label>5 <input type="radio" name="r-param" value="5" class="game-form__radius"></label>
+      </div>
       <button type="submit" class="game-form__submit-button">Отправить</button>
     </form>
     <div class="results"></div>
