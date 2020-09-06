@@ -25,9 +25,13 @@ body {
 }
 
 .des-input {
-    line-height: 1.3;
+    line-height: 1.5;
     outline: none;
     border-radius: 2px;
+}
+
+.des-select, .des-select > option {
+    padding: 3px 0;
 }
 
 .des-input, .des-radio {

@@ -1,6 +1,6 @@
 .game-form {
   width: 80%;
-  min-width: 950px;
+  min-width: 1020px;
   margin: 0 auto;
   margin-top: 20px;
   padding: 20px;
@@ -22,7 +22,7 @@
 }
 
 .game-form__coord-select {
-  min-width: 70px;
+  min-width: 100px;
 }
 
 .game-form__input-wrapper_error .game-form__coord,
@@ -32,5 +32,31 @@
 
 .game-form__input-error {
   color: var(--error-color);
-  transition: all 0.3s; 
+  transition: all 0.3s;
+  margin-top: 5px; 
+}
+
+.game-form__radio-group {
+  display: inline;
+}
+
+@media screen and (max-width: 1021px) {
+  .game-form {
+    width: calc(100% - 10px);
+    min-width: 0;
+  }
+
+  .game-form__coord, .game-form__coord-select, .game-form__radio-group {
+    display: block;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .game-form__radius-label:first-child {
+    margin-left: 0;
+  }
+
+  .game-form__input-error {
+    display: block;
+  }
 }

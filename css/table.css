@@ -1,4 +1,15 @@
 .game-results__wrapper {
   margin: 20px auto 0 auto;
   width: 70%;
+  min-width: 900px;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 901px) {
+  .game-results__wrapper {
+    width: 100%;
+    min-width: 0;
+    overflow: auto;
+  }
 }
