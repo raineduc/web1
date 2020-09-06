@@ -1,0 +1,36 @@
+.game-form {
+  width: 80%;
+  min-width: 950px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  border-radius: 2px;
+}
+
+.input-wrapper, .game-form__submit-button {
+  margin-top: 10px;
+}
+
+.game-form__radius-label, .game-form__coord-select, .game-form__coord {
+  margin-left: 5px;
+}
+
+.game-form__coord {
+  min-width: 300px;
+}
+
+.game-form__coord-select {
+  min-width: 70px;
+}
+
+.game-form__input-wrapper_error .game-form__coord,
+.game-form__input-wrapper_error .game-form__coord-select {
+  border-color: var(--error-color);
+}
+
+.game-form__input-error {
+  color: var(--error-color);
+  transition: all 0.3s; 
+}

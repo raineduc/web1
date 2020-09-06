@@ -1,7 +1,7 @@
 import { isNumber, getNumber, isYCoordInValidRange } from "../validation.js";
 
 const gameForm = document.documentElement.querySelector(".game-form");
-const tableWrapper = document.documentElement.querySelector(".results");
+const tableWrapper = document.documentElement.querySelector(".game-results");
 
 const coordInput = gameForm.querySelector(".game-form__coord");
 const coordSelect = gameForm.querySelector(".game-form__coord-select");
@@ -10,6 +10,16 @@ const radiusInput = gameForm.querySelector(".game-form__radius");
 const coordSelectWrapper = coordSelect.closest(".game-form__input-wrapper");
 const coordInputWrapper = coordInput.closest(".game-form__input-wrapper");
 const radiusInputWrapper = radiusInput.closest(".game-form__input-wrapper");
+
+fetch("./server/hit.php", { method: "GET" })
+  .then(res => {
+    if (res.ok) {
+      return res.text();
+    }
+  })
+  .then(data => {
+    tableWrapper.innerHTML = data;
+  });
 
 gameForm.addEventListener("submit", async (e) => {
   e.preventDefault();

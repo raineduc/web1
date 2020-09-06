@@ -68,7 +68,7 @@ function is_point_in_area($x, $y, $r) {
 }
 
 
-if (isset($_POST)) {
+if (isset($_POST) && $_SERVER['REQUEST_METHOD'] === 'POST') {
   $x = $_POST['x-coord'];
   $y = $_POST['y-coord'];
   $r = $_POST['r-param'];
@@ -95,5 +95,10 @@ if (isset($_POST)) {
   array_push($_SESSION['hits'], $hit);
 
   $table = renderTemplate('./templates/table.php', ['rows' => $_SESSION['hits']]);
+  echo($table);
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+  $table = renderTemplate('./templates/table.php', ['rows' => isset($_SESSION['hits']) ? $_SESSION['hits'] : []]);
   echo($table);
 }
