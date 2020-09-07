@@ -78,7 +78,7 @@ const addError = (wrapper, message) => {
   wrapper.classList.add("game-form__input-wrapper_error");
   const error =
     wrapper.querySelector(".game-form__input-error") ||
-    document.createElement("span");
+    document.createElement("p");
   if (!wrapper.querySelector(".game-form__input-error")) {
     error.className = "game-form__input-error";
     wrapper.appendChild(error);

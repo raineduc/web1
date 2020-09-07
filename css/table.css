@@ -8,7 +8,7 @@
 
 @media screen and (max-width: 901px) {
   .game-results__wrapper {
-    width: 100%;
+    width: calc(100% - 10px);
     min-width: 0;
     overflow: auto;
   }

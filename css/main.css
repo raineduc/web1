@@ -26,8 +26,11 @@ body {
 
 .des-input {
     line-height: 1.5;
+    padding: 1px 2px;
+    font-size: inherit;
     outline: none;
     border-radius: 2px;
+    margin: 0;
 }
 
 .des-select, .des-select > option {

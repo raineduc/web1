@@ -15,36 +15,53 @@
     <span class="option">Вариант: 2326</span>
   </header>
   <div class="main">
-    <form class="game-form">
-      <div class="input-wrapper game-form__input-wrapper">
-        <label for="x-coord">Введите X координату: </label>
-        <select id="x-coord" name="x-coord" class="des-input des-select game-form__coord-select">
-          <option value="-2">-2</option>
-          <option value="-1.5">-1,5</option>
-          <option value="-1">-1</option>
-          <option value="-0.5">-0,5</option>
-          <option value="0">0</option>
-          <option value="0.5">0,5</option>
-          <option value="1">1</option>
-          <option value="1.5">1,5</option>
-          <option value="2">2</option>
-        </select>
-      </div>
-      <div class="input-wrapper game-form__input-wrapper"><label for="y-coord">Введите Y координату в пределах (-3, 5): 
-          <input type="number" id="y-coord" name="y-coord" class="des-input game-form__coord" step="any">
-        </label></div>
-      <div class="input-wrapper game-form__input-wrapper">
-        <span>Введите параметр R: </span>
-        <div class="game-form__radio-group">
-          <label class="game-form__radius-label">1 <input type="radio" name="r-param" value="1" class="des-radio game-form__radius"></label>
-          <label class="game-form__radius-label">2 <input type="radio" name="r-param" value="2" class="des-radio game-form__radius"></label>
-          <label class="game-form__radius-label">3 <input type="radio" name="r-param" value="3" class="des-radio game-form__radius"></label>
-          <label class="game-form__radius-label">4 <input type="radio" name="r-param" value="4" class="des-radio game-form__radius"></label>
-          <label class="game-form__radius-label">5 <input type="radio" name="r-param" value="5" class="des-radio game-form__radius"></label>
+    <div class="game-interact">
+      <form class="game-form">
+        <div class="game-form__field">
+          <label for="x-coord" class="game-form__label">Введите X координату: </label>
+          <div class="input-wrapper game-form__input-wrapper">
+            <select id="x-coord" name="x-coord" class="des-input des-select game-form__coord-select">
+              <option value="-2">-2</option>
+              <option value="-1.5">-1,5</option>
+              <option value="-1">-1</option>
+              <option value="-0.5">-0,5</option>
+              <option value="0">0</option>
+              <option value="0.5">0,5</option>
+              <option value="1">1</option>
+              <option value="1.5">1,5</option>
+              <option value="2">2</option>
+            </select>
+          </div>
         </div>
-      </div>  
-      <button type="submit" class="des-button game-form__submit-button">Отправить</button>
-    </form>
+        <div class="game-form__field">
+          <label for="y-coord" class="game-form__label">Введите Y координату в пределах (-3,5):</label>
+          <div class="input-wrapper game-form__input-wrapper">  
+            <input type="number" id="y-coord" name="y-coord" class="des-input game-form__coord" step="any">
+          </div>
+        </div>
+        <div class="game-form__field">
+          <span class="game-form__label">Введите параметр R: </span>
+          <div class="input-wrapper game-form__input-wrapper">
+            <div class="game-form__radio-group">
+              <label class="game-form__radius-label">1 <input type="radio" name="r-param" value="1"
+                  class="des-radio game-form__radius"></label>
+              <label class="game-form__radius-label">2 <input type="radio" name="r-param" value="2"
+                  class="des-radio game-form__radius"></label>
+              <label class="game-form__radius-label">3 <input type="radio" name="r-param" value="3"
+                  class="des-radio game-form__radius"></label>
+              <label class="game-form__radius-label">4 <input type="radio" name="r-param" value="4"
+                  class="des-radio game-form__radius"></label>
+              <label class="game-form__radius-label">5 <input type="radio" name="r-param" value="5"
+                  class="des-radio game-form__radius"></label>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="des-button game-form__submit-button">Отправить</button>
+      </form>
+      <div class="game-area">
+        <img src="./static/area.png" alt="area" class="game-area__image">
+      </div>
+    </div>
     <div class="game-results"></div>
   </div>
   <script src="./js/index.js" type="module"></script>
